@@ -1,0 +1,20 @@
+clear all
+clc
+close all
+
+kind='cat'
+
+img_path_in=['./',kind,'s']
+img_path_out=['./',kind]
+
+img_list=dir(img_path_in)
+
+for ik=3:numel(img_list)
+    img=imread([img_path_in,'/',img_list(ik).name]);
+%     imshow(img)
+%     pause
+%     img_name=[img_list(ik).name(1:3),'_',img_list(ik).name(5:end-4),img_list(ik).name(end-3:end)]
+%     img_name=[img_list(ik).name(1:3),'_',num2str(str2num(img_list(ik).name(5:end-4)),'%04d'),img_list(ik).name(end-3:end)]
+     img_name=['s',num2str(str2num(img_list(ik).name(5:end-4)),'%04d'),'_',img_list(ik).name(1:3),img_list(ik).name(end-3:end)]
+     imwrite(img,[img_path_out,'/',img_name])
+end
